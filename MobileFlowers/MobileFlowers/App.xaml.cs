@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using MobileFlowers.Views;
 using Xamarin.Forms;
 
 namespace MobileFlowers
@@ -13,7 +13,7 @@ namespace MobileFlowers
         {
             InitializeComponent();
 
-            MainPage = new MobileFlowers.MainPage();
+            MainPage = new NavigationPage(new FlowersView());
         }
 
         protected override void OnStart()

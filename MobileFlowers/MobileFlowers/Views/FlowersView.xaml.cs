@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace MobileFlowers
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace MobileFlowers.Views
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FlowersView : ContentPage
     {
-        public MainPage()
+        public FlowersView()
         {
             InitializeComponent();
         }
