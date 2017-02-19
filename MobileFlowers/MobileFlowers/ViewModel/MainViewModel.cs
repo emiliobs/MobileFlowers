@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 using MobileFlowers.Models;
 using MobileFlowers.Service;
 
@@ -15,6 +17,7 @@ namespace MobileFlowers.ViewModel
         #region Attributes
 
         private ApiService apiService;
+        private NavigationService navigationService;
 
         #endregion
 
@@ -22,16 +25,22 @@ namespace MobileFlowers.ViewModel
 
         public ObservableCollection<FlowerItemViewModel> Flowers { get; set; }
 
+
+
         #endregion
 
         #region Constructors
 
         public MainViewModel()
         {
+            //Services
            apiService = new ApiService();
+           navigationService = new NavigationService();
 
+            //View models
             Flowers = new ObservableCollection<FlowerItemViewModel>();
 
+            //Load Data
             LoadFlowers();
 
         }
@@ -42,6 +51,16 @@ namespace MobileFlowers.ViewModel
 
 
         #region Commands
+
+        public ICommand AddFlowerCommand
+        {
+            get { return new RelayCommand(AddFlower); }
+        }
+
+        private async void AddFlower()
+        {
+           await navigationService.Navigate("AddFlowerView");
+        }
 
         #endregion
 
