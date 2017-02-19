@@ -2,7 +2,50 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileFlowers.Views.FlowersView"
-             Title="Flowers Page.....">
-    <Label Text="Flowers PPAge..." TextColor="Blue" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+             Title="Flowers Page....."
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+<ScrollView>
+    <StackLayout Spacing="10" Padding="10">
+
+       <ListView ItemsSource="{Binding Flowers}" HasUnevenRows="True">
+         <ListView.ItemTemplate>
+             <DataTemplate>
+                 <ViewCell>
+                     <Grid Padding="8">
+                         <Grid.ColumnDefinitions>
+                             <ColumnDefinition Width="Auto"></ColumnDefinition>
+                             <ColumnDefinition Width="*"></ColumnDefinition>
+                         </Grid.ColumnDefinitions>
+                                <Image Source="rosa.jpg"
+                                       VerticalOptions="Center"
+                                       WidthRequest="55"
+                                       HeightRequest="55">
+                                </Image>
+                         <StackLayout Grid.Column="1">
+
+                             <Label FontAttributes="Bold"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    Text="{Binding Description}">
+
+                             </Label>
+                             <Label
+                                 VerticalOptions="Center"
+                                 TextColor="Red"
+                                 Text="{Binding Price, StringFormat='{0:C2} Euros'}">
+
+                             </Label>
+
+
+                                </StackLayout>
+                     </Grid>
+                 </ViewCell>
+             </DataTemplate>
+         </ListView.ItemTemplate>
+       </ListView>
+
+    </StackLayout>
+</ScrollView>
 
 </ContentPage>

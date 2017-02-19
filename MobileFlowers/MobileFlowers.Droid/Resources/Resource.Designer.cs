@@ -26,6 +26,8 @@ namespace MobileFlowers.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::GalaSoft.MvvmLight.Resource.String.ApplicationName = global::MobileFlowers.Droid.Resource.String.ApplicationName;
+			global::GalaSoft.MvvmLight.Resource.String.Hello = global::MobileFlowers.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MobileFlowers.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -2200,8 +2202,11 @@ namespace MobileFlowers.Droid
 			// aapt resource value: 0x7f0200a0
 			public const int mr_ic_play_light = 2130837664;
 			
+			// aapt resource value: 0x7f0200a2
+			public const int notification_template_icon_bg = 2130837666;
+			
 			// aapt resource value: 0x7f0200a1
-			public const int notification_template_icon_bg = 2130837665;
+			public const int rosa = 2130837665;
 			
 			static Drawable()
 			{
@@ -2936,6 +2941,12 @@ namespace MobileFlowers.Droid
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f080027
+			public const int ApplicationName = 2131230759;
+			
+			// aapt resource value: 0x7f080026
+			public const int Hello = 2131230758;
 			
 			// aapt resource value: 0x7f08000f
 			public const int abc_action_bar_home_description = 2131230735;
