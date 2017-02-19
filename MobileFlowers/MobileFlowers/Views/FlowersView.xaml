@@ -48,4 +48,8 @@
     </StackLayout>
 </ScrollView>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_circle.png" Text="New Flowers."></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
 </ContentPage>

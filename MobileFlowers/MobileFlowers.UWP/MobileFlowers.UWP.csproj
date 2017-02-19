@@ -108,6 +108,7 @@
     <None Include="MobileFlowers.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="ic_action_add_circle.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />
