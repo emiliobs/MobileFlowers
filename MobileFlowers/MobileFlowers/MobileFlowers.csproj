@@ -38,13 +38,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Response.cs" />
     <Compile Include="Infrastructure\InstanceLocator.cs" />
     <Compile Include="Models\Flowers.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ApiService.cs" />
+    <Compile Include="Service\DialogService.cs" />
     <Compile Include="Service\NavigationService.cs" />
     <Compile Include="ViewModel\FlowerItemViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NewFlowerViewModel.cs" />
     <Compile Include="Views\AddFlowerView.xaml.cs">
       <DependentUpon>AddFlowerView.xaml</DependentUpon>
     </Compile>

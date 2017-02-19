@@ -5,6 +5,37 @@
              Title="New Flower....."
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
 
-    <Label Text="new flower page.." HorizontalOptions="Center" VerticalOptions="Center"></Label>
+    <StackLayout
+    BindingContext="{Binding NewFlowerViewModel}"
+    Padding="8">
+        <Label
+      Text="Description">
+        </Label>
+        <Entry
+      Text="{Binding Description, Mode=TwoWay}"
+      Placeholder="Enter a description...">
+        </Entry>
+        <Label
+      Text="Price">
+        </Label>
+        <Entry
+      Text="{Binding Price, Mode=TwoWay}"
+      Keyboard="Numeric"
+      Placeholder="Enter a price...">
+        </Entry>
+        <ActivityIndicator
+      IsRunning="{Binding IsBusy, Mode=TwoWay}">
+        </ActivityIndicator>
+        <Button
+      Command="{Binding NewFlowerCommand}"
+      IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+      BorderRadius="20"
+      HeightRequest="40"
+      BackgroundColor="Blue"
+      TextColor="White"
+      Text="New">
+        </Button>
+    </StackLayout>
+
 
 </ContentPage>

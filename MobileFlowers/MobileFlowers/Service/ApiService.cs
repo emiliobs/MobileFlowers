@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using MobileFlowers.Classes;
 using Newtonsoft.Json;
 
 namespace MobileFlowers.Service
 {
-     public  class ApiService
+    public  class ApiService
     {
-         public async Task<List<T>> Get<T>(string urlBase, string servicePrefix, string controller)
+        //Método GET generico:
+        public async Task<Response> Get<T>(string urlBase, string servicePrefix, string controller)
          {
              try
              {
@@ -22,20 +22,74 @@ namespace MobileFlowers.Service
 
                  if (!response.IsSuccessStatusCode)
                  {
-                     return null;
+                     return new Response()
+                     {
+                         IsSuccess =  false,
+                         Message = response.StatusCode.ToString(),
+                     };
                  }
 
                  var result = await response.Content.ReadAsStringAsync();
                  var list = JsonConvert.DeserializeObject<List<T>>(result);
 
-                 return list;
+                 return new Response()
+                 {
+                     IsSuccess = true,
+                     Message = "OK.!",
+                     Result = list,
+                 };
              }
-             catch
+             catch(Exception ex)
              {
 
-                 return null;
+                 return new Response()
+                 {
+                     IsSuccess = false,
+                     Message = ex.Message,
+                 };
              }
          }
 
+        //Método POST generico:
+        public async Task<Response> Post<T>(string urlBase, string servicePrefix, string controller, T model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var newRecord = JsonConvert.DeserializeObject<T>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Record added OK",
+                    Result = newRecord,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+
+        }
     }
 }
