@@ -23,7 +23,7 @@
 </ScrollView>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_action_add_circle.png" Text="New Flowers."
+        <ToolbarItem Icon="ic_action_add_circle.png"
                      Command="{Binding AddFlowerCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
 

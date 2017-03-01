@@ -11,5 +11,10 @@ namespace MobileFlowers.Models
         public int FlowerId { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
+
+        public override int GetHashCode()
+        {
+            return FlowerId;
+        }
     }
 }

@@ -20,7 +20,7 @@
       Text="Price">
             </Label>
             <Entry
-      Text="{Binding Price, Mode=TwoWay}"
+      Text="{Binding  Price, Mode=TwoWay}"
       Keyboard="Numeric"
       Placeholder="Enter a price...">
             </Entry>
