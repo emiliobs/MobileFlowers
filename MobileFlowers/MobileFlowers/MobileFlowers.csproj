@@ -46,11 +46,15 @@
     <Compile Include="Service\ApiService.cs" />
     <Compile Include="Service\DialogService.cs" />
     <Compile Include="Service\NavigationService.cs" />
+    <Compile Include="ViewModel\EditFlowerViewModel.cs" />
     <Compile Include="ViewModel\FlowerItemViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NewFlowerViewModel.cs" />
     <Compile Include="Views\AddFlowerView.xaml.cs">
       <DependentUpon>AddFlowerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditFlowerView.xaml.cs">
+      <DependentUpon>EditFlowerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FlowersView.xaml.cs">
       <DependentUpon>FlowersView.xaml</DependentUpon>
@@ -115,6 +119,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\FlowersView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\EditFlowerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -33,6 +33,8 @@ namespace MobileFlowers.ViewModel
 
         public NewFlowerViewModel NewFlowerViewModel { get; set; }
 
+        public EditFlowerViewModel EditFlower { get; set; }
+
         public bool IsBusy
         {
             get { return isBusy; }
@@ -73,7 +75,7 @@ namespace MobileFlowers.ViewModel
         private void RefreshFlowers()
         {
             IsBusy2 = true;
-            
+
            LoadFlowers();
 
             IsBusy2 = false;
@@ -85,7 +87,7 @@ namespace MobileFlowers.ViewModel
 
         public MainViewModel()
         {
-           
+
 
             //Singleton:
             instance = this;

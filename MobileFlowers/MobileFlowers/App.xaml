@@ -14,6 +14,11 @@
             <DataTemplate x:Key="FlowersDataTemplate">
                 <ViewCell>
                     <Grid Padding="8">
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding EditFlowerCommand}"/>
+                        </Grid.GestureRecognizers>
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>

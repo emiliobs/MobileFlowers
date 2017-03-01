@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileFlowers.Views.EditFlowerView"
+             Title="Edit Flower"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ScrollView BindingContext="{Binding EditFlower}">
+
+        <StackLayout Padding="10">
+
+            <Label
+      Text="Description">
+            </Label>
+            <Entry
+      Text="{Binding Description, Mode=TwoWay}"
+      Placeholder="Enter a description...">
+            </Entry>
+            <Label
+      Text="Price">
+            </Label>
+            <Entry
+      Text="{Binding Price, Mode=TwoWay}"
+      Keyboard="Numeric"
+      Placeholder="Enter a price...">
+            </Entry>
+            <ActivityIndicator
+      IsRunning="{Binding IsRunning, Mode=TwoWay}">
+            </ActivityIndicator>
+            <StackLayout
+      Orientation="Horizontal">
+                <Button
+        Command="{Binding SaveFlowerCommand}"
+        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+        BorderRadius="20"
+        HeightRequest="40"
+        BackgroundColor="Blue"
+        HorizontalOptions="FillAndExpand"
+        TextColor="White"
+        Text="Save">
+                </Button>
+                <Button
+        Command="{Binding DeleteFlowerCommand}"
+        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+        BorderRadius="20"
+        HeightRequest="40"
+        BackgroundColor="Red"
+        HorizontalOptions="FillAndExpand"
+        TextColor="White"
+        Text="Delete">
+                </Button>
+            </StackLayout>
+
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

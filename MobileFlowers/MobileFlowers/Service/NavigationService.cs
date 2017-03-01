@@ -9,15 +9,25 @@ namespace MobileFlowers.Service
 
          public async Task Navigate(string pageName)
          {
-             switch (pageName)
+
+            var mainViewModel = MainViewModel.GetInstance();
+
+            switch (pageName)
              {
                 case "AddFlowerView":
 
-                     var mainViewModel = MainViewModel.GetInstance();
                       mainViewModel.NewFlowerViewModel = new NewFlowerViewModel();
 
                      await App.Current.MainPage.Navigation.PushAsync(new AddFlowerView());
                     break;
+
+                case "EditFlowerView":
+
+                    mainViewModel.EditFlower = new EditFlowerViewModel();
+
+                    await App.Current.MainPage.Navigation.PushAsync(new EditFlowerView());
+                    break;
+
                 default:
                     break;
              }

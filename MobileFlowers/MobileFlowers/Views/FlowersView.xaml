@@ -8,18 +8,18 @@
 <ScrollView>
     <StackLayout Spacing="10" Padding="10">
 
-       <ListView ItemsSource="{Binding Flowers}" 
-                 HasUnevenRows="True" 
+       <ListView ItemsSource="{Binding Flowers}"
+                 HasUnevenRows="True"
                  IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
                  IsPullToRefreshEnabled="True"
                  RefreshCommand="{Binding RefreshCommand}"
                  ItemTemplate="{StaticResource FlowersDataTemplate}">
-        
+
        </ListView>
-        
+
         <ActivityIndicator IsRunning="{Binding IsBusy}"></ActivityIndicator>
     </StackLayout>
-    
+
 </ScrollView>
 
     <ContentPage.ToolbarItems>
