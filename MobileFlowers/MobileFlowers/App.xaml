@@ -9,6 +9,41 @@
         <ResourceDictionary>
             <!--Locator-->
             <infra:InstanceLocator x:Key="Locator"></infra:InstanceLocator>
+
+            <!--DataTemplate-->
+            <DataTemplate x:Key="FlowersDataTemplate">
+                <ViewCell>
+                    <Grid Padding="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="rosa.jpg"
+                                       VerticalOptions="Center"
+                                       WidthRequest="55"
+                                       HeightRequest="55">
+                        </Image>
+                        <StackLayout Grid.Column="1">
+
+                            <Label FontAttributes="Bold"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    Text="{Binding Description}">
+
+                            </Label>
+                            <Label
+                                 VerticalOptions="Center"
+                                 TextColor="Red"
+                                 Text="{Binding Price, StringFormat='{0:C2} Euros'}">
+
+                            </Label>
+
+
+                        </StackLayout>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+
         </ResourceDictionary>
 
 	</Application.Resources>

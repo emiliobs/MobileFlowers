@@ -8,44 +8,18 @@
 <ScrollView>
     <StackLayout Spacing="10" Padding="10">
 
-       <ListView ItemsSource="{Binding Flowers}" HasUnevenRows="True">
-         <ListView.ItemTemplate>
-             <DataTemplate>
-                 <ViewCell>
-                     <Grid Padding="8">
-                         <Grid.ColumnDefinitions>
-                             <ColumnDefinition Width="Auto"></ColumnDefinition>
-                             <ColumnDefinition Width="*"></ColumnDefinition>
-                         </Grid.ColumnDefinitions>
-                                <Image Source="rosa.jpg"
-                                       VerticalOptions="Center"
-                                       WidthRequest="55"
-                                       HeightRequest="55">
-                                </Image>
-                         <StackLayout Grid.Column="1">
-
-                             <Label FontAttributes="Bold"
-                                    TextColor="Black"
-                                    VerticalOptions="Center"
-                                    Text="{Binding Description}">
-
-                             </Label>
-                             <Label
-                                 VerticalOptions="Center"
-                                 TextColor="Red"
-                                 Text="{Binding Price, StringFormat='{0:C2} Euros'}">
-
-                             </Label>
-
-
-                                </StackLayout>
-                     </Grid>
-                 </ViewCell>
-             </DataTemplate>
-         </ListView.ItemTemplate>
+       <ListView ItemsSource="{Binding Flowers}" 
+                 HasUnevenRows="True" 
+                 IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                 IsPullToRefreshEnabled="True"
+                 RefreshCommand="{Binding RefreshCommand}"
+                 ItemTemplate="{StaticResource FlowersDataTemplate}">
+        
        </ListView>
+        
         <ActivityIndicator IsRunning="{Binding IsBusy}"></ActivityIndicator>
     </StackLayout>
+    
 </ScrollView>
 
     <ContentPage.ToolbarItems>

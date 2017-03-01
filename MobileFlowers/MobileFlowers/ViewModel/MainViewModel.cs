@@ -24,6 +24,7 @@ namespace MobileFlowers.ViewModel
         private DialogService dialogService;
 
         private bool isBusy;
+        private bool isBusy2;
         #endregion
 
         #region Properties
@@ -43,12 +44,48 @@ namespace MobileFlowers.ViewModel
             }
         }
 
+        public bool IsBusy2
+        {
+            get { return isBusy2; }
+            set
+            {
+                isBusy2 = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand AddFlowerCommand
+        {
+            get { return new RelayCommand(AddFlower); }
+        }
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+
+               return new RelayCommand(RefreshFlowers);
+
+            }
+        }
+
+        private void RefreshFlowers()
+        {
+            IsBusy2 = true;
+            
+           LoadFlowers();
+
+            IsBusy2 = false;
+        }
+
         #endregion
 
         #region Constructors
 
         public MainViewModel()
         {
+           
 
             //Singleton:
             instance = this;
@@ -62,7 +99,7 @@ namespace MobileFlowers.ViewModel
             Flowers = new ObservableCollection<FlowerItemViewModel>();
 
             //Load Data
-            LoadFlowers();
+            //LoadFlowers();
 
         }
 
@@ -89,10 +126,8 @@ namespace MobileFlowers.ViewModel
 
         #region Commands
 
-        public ICommand AddFlowerCommand
-        {
-            get { return new RelayCommand(AddFlower); }
-        }
+
+
 
 
 
@@ -109,7 +144,7 @@ namespace MobileFlowers.ViewModel
         {
             IsBusy = true;
 
-            var response = await apiService.Get<Flowers>("http://flowerback.azurewebsites.net", "/api", "/Flowers");
+            var response = await apiService.Get<Flowers>("http://flowersback2.azurewebsites.net", "/api", "/Flowers");
 
             if (!response.IsSuccess)
             {
@@ -120,13 +155,17 @@ namespace MobileFlowers.ViewModel
             ReloadFlowers((List<Flowers>)response.Result);
 
             IsBusy = false;
+
+
         }
 
         private void ReloadFlowers(List<Flowers> listFlowers)
         {
            Flowers.Clear();
 
-            foreach (var flower in listFlowers)
+
+
+            foreach (var flower in listFlowers.OrderBy(f=>f.Description))
             {
                 Flowers.Add(new FlowerItemViewModel()
                 {
@@ -135,6 +174,8 @@ namespace MobileFlowers.ViewModel
                     Price = flower.Price,
                 });
             }
+
+
         }
 
         #endregion
