@@ -34,7 +34,7 @@ namespace MobileFlowers.ViewModel
 
         private async void EditFlower()
         {
-            await navigationService.Navigate("EditFlowerView");
+            await navigationService.EditFlower(this);
         }
 
         #endregion

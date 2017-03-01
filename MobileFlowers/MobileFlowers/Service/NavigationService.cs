@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using MobileFlowers.ViewModel;
 using MobileFlowers.Views;
+using  MobileFlowers.Models;
+using Xamarin.Forms;
 
 namespace MobileFlowers.Service
 {
@@ -21,16 +23,19 @@ namespace MobileFlowers.Service
                      await App.Current.MainPage.Navigation.PushAsync(new AddFlowerView());
                     break;
 
-                case "EditFlowerView":
-
-                    mainViewModel.EditFlower = new EditFlowerViewModel();
-
-                    await App.Current.MainPage.Navigation.PushAsync(new EditFlowerView());
-                    break;
 
                 default:
                     break;
              }
+         }
+
+
+        //Mérodo que envia datos por parametro a la vista edutflowerView:
+         public async Task EditFlower(Flowers flower)
+         {
+             var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.EditFlower = new EditFlowerViewModel(flower);
+             await App.Current.MainPage.Navigation.PushAsync(new EditFlowerView());
          }
 
          public async Task Back()
