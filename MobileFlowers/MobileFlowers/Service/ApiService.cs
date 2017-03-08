@@ -15,11 +15,13 @@ namespace MobileFlowers.Service
          {
              try
              {
+               
+
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
                  var url = $"{servicePrefix}{controller}";
                  var response = await client.GetAsync(url);
-
+                
                  if (!response.IsSuccessStatusCode)
                  {
                      return new Response()
