@@ -114,7 +114,8 @@ namespace MobileFlowers.ViewModel
             IsRunning = true;
             IsEnabled = false;
 
-            var response = await apiService.Put("http://flowersback2.azurewebsites.net","/api","/Flowers", this);
+            var response = await apiService.Put("http://flowershome.azurewebsites.net", "/api","/Flowers", this);
+            
 
             IsRunning = false;
             IsEnabled = true;
@@ -151,7 +152,7 @@ namespace MobileFlowers.ViewModel
             IsRunning = true;
             IsEnabled = false;
 
-            var response = await apiService.Delete("http://flowersback2.azurewebsites.net", "/api", "/Flowers", this);
+            var response = await apiService.Delete("http://flowershome.azurewebsites.net", "/api", "/Flowers", this);
 
             IsRunning = false;
             IsEnabled = true;

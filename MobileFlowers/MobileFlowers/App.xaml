@@ -23,28 +23,41 @@
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Image Source="rosa.jpg"
+                        <Image Source="imgavatar.png"
                                        VerticalOptions="Center"
                                        WidthRequest="55"
                                        HeightRequest="55">
                         </Image>
                         <StackLayout Grid.Column="1">
 
-                            <Label FontAttributes="Bold"
-                                    TextColor="Black"
+                            <Label FontAttributes="Bold"  
+                                   TextColor="Black"
                                     VerticalOptions="Center"
                                     Text="{Binding Description}">
 
                             </Label>
-                            <Label
+                            <!--<Label
                                  VerticalOptions="Center"
                                  TextColor="Red"
-                                 Text="{Binding Price, StringFormat='{0:C2} Euros'}">
-
+                                 Text="{Binding Price, StringFormat='Price {0:C2} Euros'}">     
                             </Label>
+                            <Label
+                                 VerticalOptions="Center"
+                                 TextColor="Black"
+                                 Text="{Binding LastPurchase, StringFormat='Last Purchase {dd/MM/yyyy}'}">     
+                            </Label>-->
 
+
+                            <StackLayout Orientation="Horizontal">
+                                
+                                <Switch IsToggled="True"></Switch>
+
+                            </StackLayout>
 
                         </StackLayout>
+                       
+
+
                     </Grid>
                 </ViewCell>
             </DataTemplate>
