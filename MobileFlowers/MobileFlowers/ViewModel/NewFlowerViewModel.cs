@@ -140,7 +140,7 @@ namespace MobileFlowers.ViewModel
 
 
 
-            var response = await apiService.Post("http://flowershome.azurewebsites.net", "/api", "/Flowers", flower);
+            var response = await apiService.Post("http://flowersback2.azurewebsites.net", "/api", "/Flowers", flower);
 
             IsBusy = false;
             IsEnabled = true;

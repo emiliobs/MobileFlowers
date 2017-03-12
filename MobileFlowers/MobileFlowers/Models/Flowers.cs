@@ -10,26 +10,7 @@ namespace MobileFlowers.Models
     {
         public int FlowerId { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }   
-        public DateTime? LastPurchase { get; set; }  
-        public string Image { get; set; } 
-        public bool IsActive { get; set; }    
-        public string Observation { get; set; }
-
-        public string ImageFullPath
-        {
-
-            get
-            {
-                if (string.IsNullOrEmpty(Image))
-                {
-                    return "imgavatar.png";
-                }
-                return $"http://flowershome.azurewebsites.net{Image.Substring(1)}";
-
-
-            }
-        }
+        public decimal Price { get; set; }
 
         public override int GetHashCode()
         {
