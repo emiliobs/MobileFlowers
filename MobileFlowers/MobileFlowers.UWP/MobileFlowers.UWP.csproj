@@ -110,6 +110,8 @@
   <ItemGroup>
     <AndroidResource Include="ic_action_add_circle.png" />
     <AndroidResource Include="Assets\ic_action_add_circle.png" />
+    <AndroidResource Include="Avatar.jpg" />
+    <AndroidResource Include="imgavatar.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />
@@ -142,6 +144,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <AndroidResource Include="rosa-preservada-roja2.jpg" />
     <Content Include="rosa.jpg" />
   </ItemGroup>
   <ItemGroup>

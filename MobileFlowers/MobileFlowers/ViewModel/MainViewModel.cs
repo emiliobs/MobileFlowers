@@ -127,12 +127,7 @@ namespace MobileFlowers.ViewModel
 
 
         #region Commands
-
-
-
-
-
-
+                          
         private async void AddFlower()
         {
            await navigationService.Navigate("AddFlowerView");
@@ -146,7 +141,8 @@ namespace MobileFlowers.ViewModel
         {
             IsBusy = true;
 
-            var response = await apiService.Get<Flowers>("http://flowersback2.azurewebsites.net", "/api", "/Flowers");
+            //var response = await apiService.Get<Flowers>("http://flowersback2.azurewebsites.net", "/api", "/Flowers");
+            var response = await apiService.Get<Flowers>("http://flowershome.azurewebsites.net", "/api", "/Flowers");
 
             if (!response.IsSuccess)
             {
@@ -174,6 +170,7 @@ namespace MobileFlowers.ViewModel
                     Description = flower.Description,
                     FlowerId = flower.FlowerId,
                     Price = flower.Price,
+                    Image = flower.Image,
                 });
             }
 

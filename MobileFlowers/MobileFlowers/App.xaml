@@ -23,7 +23,7 @@
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Image Source="rosa.jpg"
+                        <Image Source="{Binding FullImagePath}"
                                        VerticalOptions="Center"
                                        WidthRequest="55"
                                        HeightRequest="55">
@@ -39,11 +39,11 @@
                             <Label
                                  VerticalOptions="Center"
                                  TextColor="Red"
-                                 Text="{Binding Price, StringFormat='{0:C2} Euros'}">
+                                 Text="{Binding Price, StringFormat='Price: {0:C2} Euros'}">
 
                             </Label>
 
-
+                            <Switch IsToggled="True"></Switch>
                         </StackLayout>
                     </Grid>
                 </ViewCell>
