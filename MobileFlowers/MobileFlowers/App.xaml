@@ -31,6 +31,7 @@
                         <StackLayout Grid.Column="1">
 
                             <Label FontAttributes="Bold"
+                                   FontSize="Medium"
                                     TextColor="Black"
                                     VerticalOptions="Center"
                                     Text="{Binding Description}">
@@ -43,7 +44,29 @@
 
                             </Label>
 
-                            <Switch IsToggled="True"></Switch>
+                            <Label
+                                 VerticalOptions="Center"
+                                 TextColor="Black"
+                                 Text="{Binding LastPurchase, StringFormat='Last Purchase: {0:dd/MM/yyyy}'}">
+
+                            </Label>
+                            
+                            <StackLayout Orientation="Horizontal">
+                                
+                                <Label Text="Is Active:"
+                                       TextColor="Black"
+                                       HorizontalOptions="StartAndExpand" >
+                                    
+                                </Label>
+                                
+                                <Switch IsToggled="{Binding IsActive}"
+                                        HorizontalOptions="End"
+                                        IsEnabled="False">
+                                    
+                                </Switch>
+
+                            </StackLayout>
+
                         </StackLayout>
                     </Grid>
                 </ViewCell>

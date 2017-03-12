@@ -14,6 +14,11 @@ namespace MobileFlowers.Models
 
         public string Image { get; set; }
 
+        public DateTime? LastPurchase { get; set; }
+        public bool IsActive { get; set; }
+
+        public string Observation { get; set; }
+
         public string FullImagePath
         {
             get

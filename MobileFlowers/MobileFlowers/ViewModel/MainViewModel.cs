@@ -171,6 +171,9 @@ namespace MobileFlowers.ViewModel
                     FlowerId = flower.FlowerId,
                     Price = flower.Price,
                     Image = flower.Image,
+                    LastPurchase = flower.LastPurchase,
+                    IsActive = flower.IsActive,
+                    Observation = flower.Observation,
                 });
             }
 
