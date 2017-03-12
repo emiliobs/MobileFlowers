@@ -69,6 +69,13 @@ namespace MobileFlowers.ViewModel
             Description = flowers.Description;
             Price = flowers.Price;
             FlowerId = flowers.FlowerId;
+            LastPurchase = flowers.LastPurchase;
+            IsActive = flowers.IsActive;
+            Observation = flowers.Observation;
+            Image = flowers.Image;
+
+            IsEnabled = true;
+
 
 
             //services:

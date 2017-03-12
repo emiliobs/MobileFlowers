@@ -112,6 +112,10 @@
     <AndroidResource Include="Assets\ic_action_add_circle.png" />
     <AndroidResource Include="Avatar.jpg" />
     <AndroidResource Include="imgavatar.png" />
+    <Content Include="camera.png" />
+    <Content Include="fondo.jpg" />
+    <Content Include="fondos-moviles.jpg" />
+    <Content Include="ic_add_a_photo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />

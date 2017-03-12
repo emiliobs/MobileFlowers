@@ -37,23 +37,26 @@
                                     Text="{Binding Description}">
 
                             </Label>
-                            <Label
+                            <Label FontSize="Medium"
                                  VerticalOptions="Center"
+                                FontAttributes="Bold"
                                  TextColor="Red"
                                  Text="{Binding Price, StringFormat='Price: {0:C2} Euros'}">
 
                             </Label>
 
-                            <Label
+                            <Label FontSize="Medium"
                                  VerticalOptions="Center"
+                                FontAttributes="Bold"
                                  TextColor="Black"
                                  Text="{Binding LastPurchase, StringFormat='Last Purchase: {0:dd/MM/yyyy}'}">
 
                             </Label>
                             
                             <StackLayout Orientation="Horizontal">
-                                
-                                <Label Text="Is Active:"
+
+                                <Label Text="Is Active:" FontSize="Medium"
+                                       FontAttributes="Bold"
                                        TextColor="Black"
                                        HorizontalOptions="StartAndExpand" >
                                     

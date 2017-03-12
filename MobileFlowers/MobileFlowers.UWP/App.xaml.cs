@@ -76,6 +76,11 @@ namespace MobileFlowers.UWP
                 // parameter
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
+
+
+            //Plugin.Media.MediaImplementation.OnFilesPicked(e);     
+            //base.OnActivated(e);
+            
             // Ensure the current window is active
             Window.Current.Activate();
         }
@@ -103,5 +108,7 @@ namespace MobileFlowers.UWP
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+
     }
 }

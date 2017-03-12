@@ -3,39 +3,79 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileFlowers.Views.AddFlowerView"
              Title="New Flower....."
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImage="fondo.jpg">
 
-    <StackLayout
+    <ScrollView>
+
+        <StackLayout
     BindingContext="{Binding NewFlowerViewModel}"
     Padding="8">
-        <Label
-      Text="Description">
-        </Label>
-        <Entry
+            <Label
+      Text="Description" FontAttributes="Bold" FontSize="Medium">
+            </Label>
+            <Entry
       Text="{Binding Description, Mode=TwoWay}"
       Placeholder="Enter a description...">
-        </Entry>
-        <Label
-      Text="Price">
-        </Label>
-        <Entry
+            </Entry>
+            <Label
+      Text="Price" FontAttributes="Bold" FontSize="Medium">
+            </Label>
+            <Entry
       Text="{Binding  Price, Mode=TwoWay}"
       Keyboard="Numeric"
       Placeholder="Enter a price...">
-        </Entry>
-        <ActivityIndicator
-      IsRunning="{Binding IsBusy, Mode=TwoWay}">
-        </ActivityIndicator>
-        <Button
+            </Entry>
+
+            <Label Text="Last Purchase" FontAttributes="Bold" FontSize="Medium"></Label>
+            <!--pilas, siempre genra error por estar un campo fecha nullo hay que inicializarlo en el contructor-->
+            <DatePicker Date="{Binding LastPurchase, Mode=TwoWay}"></DatePicker>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Is Active"
+                       HorizontalOptions="StartAndExpand" 
+                       FontSize="Medium" 
+                       FontAttributes="Bold"></Label>
+                <Switch IsToggled="{Binding IsActive, Mode=TwoWay}"  HorizontalOptions="End"></Switch>
+
+
+            </StackLayout>
+
+
+            <Label Text="Observation" 
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   TextColor="Aqua"></Label>
+            <Editor Text="{Binding Observation, Mode=TwoWay}"></Editor>
+
+
+            <StackLayout Orientation="Horizontal">
+
+                <Image HorizontalOptions="StartAndExpand" Source="ic_add_a_photo.png">
+                    <Image.GestureRecognizers>
+                          <TapGestureRecognizer Command="{Binding TakePictureCamera}"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                
+                <ActivityIndicator IsRunning="{Binding IsBusy, Mode=TwoWay}" HorizontalOptions="EndAndExpand"></ActivityIndicator>
+                
+            </StackLayout>
+            
+            <Image Source="{Binding ImageSource, Mode=TwoWay}"></Image>
+
+          <Button
       Command="{Binding NewFlowerCommand}"
+      
       IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
       BorderRadius="20"
       HeightRequest="40"
-      BackgroundColor="Blue"
-      TextColor="White"
+      BackgroundColor="DeepSkyBlue"
+      TextColor="Black"
       Text="New">
-        </Button>
-    </StackLayout>
+            </Button>
+        </StackLayout>
 
+    </ScrollView>
 
 </ContentPage>

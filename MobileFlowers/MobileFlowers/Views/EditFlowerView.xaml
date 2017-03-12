@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileFlowers.Views.EditFlowerView"
              Title="Edit Flower"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+              BackgroundImage="fondo.jpg">
 
     <ScrollView BindingContext="{Binding EditFlower}">
 
@@ -24,6 +25,29 @@
       Keyboard="Numeric"
       Placeholder="Enter a price...">
             </Entry>
+
+            <Label Text="Last Purchase" FontAttributes="Bold" FontSize="Medium"></Label>
+            <!--pilas, siempre genra error por estar un campo fecha nullo hay que inicializarlo en el contructor-->
+            <DatePicker Date="{Binding LastPurchase, Mode=TwoWay}"></DatePicker>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Is Active"
+                       HorizontalOptions="StartAndExpand" 
+                       FontSize="Medium" 
+                       FontAttributes="Bold"></Label>
+                <Switch IsToggled="{Binding IsActive, Mode=TwoWay}"  HorizontalOptions="End"></Switch>
+
+
+            </StackLayout>
+
+
+            <Label Text="Observation" 
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   TextColor="Aqua"></Label>
+            <Editor Text="{Binding Observation, Mode=TwoWay}"></Editor>
+
             <ActivityIndicator
       IsRunning="{Binding IsRunning, Mode=TwoWay}">
             </ActivityIndicator>
@@ -34,7 +58,7 @@
         IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
         BorderRadius="20"
         HeightRequest="40"
-        BackgroundColor="Blue"
+        BackgroundColor="DeepSkyBlue"
         HorizontalOptions="FillAndExpand"
         TextColor="White"
         Text="Save">

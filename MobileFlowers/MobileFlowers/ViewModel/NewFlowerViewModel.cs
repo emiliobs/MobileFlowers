@@ -1,21 +1,26 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using MobileFlowers.Annotations;
 using MobileFlowers.Service;
 using MobileFlowers.Models;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using Xamarin.Forms;
 
 namespace MobileFlowers.ViewModel
 {
-    public class NewFlowerViewModel : INotifyPropertyChanged
+    public class NewFlowerViewModel : Flowers, INotifyPropertyChanged
     {
         #region Attributes
-
-        private string description;
-        private decimal price;
+       
         private bool isBusy;
         private bool isEnabled;
+
+        private ImageSource imageSource;
+        private MediaFile file;
 
         private DialogService dialogService;
         private ApiService apiService;
@@ -25,36 +30,7 @@ namespace MobileFlowers.ViewModel
 
         #region Properties
 
-        public string Description
-        {
-
-            set
-            {
-                if (description != value)
-                {
-                    description = value;
-
-                    OnPropertyChanged();
-
-                }
-            }
-            get { return description; }
-        }
-
-        public decimal Price
-        {
-
-            set
-            {
-                if (price != value)
-                {
-                    price = value;
-                    OnPropertyChanged();
-                }
-            }
-
-            get { return price; }
-        }
+        
 
         public bool IsBusy
         {
@@ -86,8 +62,20 @@ namespace MobileFlowers.ViewModel
 
         }
 
+        public ImageSource ImageSource
+        {
+            get { return imageSource; }
 
-
+            set
+            {
+                if (imageSource != value)
+                {
+                    imageSource = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+       
         #endregion
 
         #region Constructor
@@ -100,16 +88,60 @@ namespace MobileFlowers.ViewModel
             apiService = new ApiService();
             navigationService = new NavigationService();
 
+            //Inicializo el campo fecha para evitar error por estar nulo:
+            LastPurchase = DateTime.Now;
+
             IsEnabled = true;
         }
         #endregion
 
         #region Commands
 
+        public ICommand TakePictureCamera
+        {
+            get{ return   new RelayCommand(TakePicture);}
+        }
+
+        private async void TakePicture()
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await dialogService.showMessage("No Camera", ":( No camera available.)}");
+            }
+
+            file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
+            {
+                Directory = "Sample",
+                Name = "test.jpg",
+                PhotoSize = PhotoSize.Small,
+            });
+
+            IsBusy = true;
+
+            if (file != null)
+            {
+                ImageSource = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+
+                    return stream;
+                });
+            }
+
+            isBusy = false;
+
+        }
+
+
         public ICommand NewFlowerCommand
         {
             get { return new RelayCommand(NewFlower); }
         }
+
+       
+
 
         private async void NewFlower()
         {
@@ -135,6 +167,9 @@ namespace MobileFlowers.ViewModel
             {
                 Description = Description,
                 Price = Price,
+                IsActive = IsActive,
+                LastPurchase = LastPurchase,
+                Observation = Observation,
 
             };
 

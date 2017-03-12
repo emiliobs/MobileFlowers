@@ -5,6 +5,7 @@
     "Microsoft.Net.Http": "2.2.29",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
     "Portable.MvvmLightLibs": "5.0.2",
+    "Xam.Plugin.Media": "2.6.3.8-beta",
     "Xamarin.Forms": "2.3.4.192-pre2"
   },
   "frameworks": {

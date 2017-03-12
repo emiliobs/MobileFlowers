@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileFlowers.Views.FlowersView"
              Title="Flowers Page....."
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImage="fondo.jpg">
 
 <ScrollView>
     <StackLayout Spacing="10" Padding="10">
