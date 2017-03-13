@@ -19,6 +19,8 @@ namespace MobileFlowers.Models
 
         public string Observation { get; set; }
 
+        public byte[] ImageArray { get; set; }
+
         public string FullImagePath
         {
             get

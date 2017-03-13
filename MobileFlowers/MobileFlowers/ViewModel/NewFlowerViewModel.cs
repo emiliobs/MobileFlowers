@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using MobileFlowers.Annotations;
+using MobileFlowers.Classes;
 using MobileFlowers.Service;
 using MobileFlowers.Models;
 using Plugin.Media;
@@ -158,6 +159,11 @@ namespace MobileFlowers.ViewModel
                 return;
             }
 
+             //aqui invoco el metodo de la clase fileHelper para con vertir los bits de la foto a array de string:
+            var imageArray = FilesHelper.ReadFully(file.GetStream());
+
+            //limpio memoria:
+            file.Dispose();
 
             IsBusy = true;
             IsEnabled = false;
@@ -170,6 +176,7 @@ namespace MobileFlowers.ViewModel
                 IsActive = IsActive,
                 LastPurchase = LastPurchase,
                 Observation = Observation,
+                ImageArray = imageArray,
 
             };
 
