@@ -5,10 +5,15 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using MobileFlowers.Annotations;
+using MobileFlowers.Classes;
 using MobileFlowers.Models;
 using MobileFlowers.Service;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 
 namespace MobileFlowers.ViewModel
@@ -19,7 +24,10 @@ namespace MobileFlowers.ViewModel
 
         private DialogService dialogService;
         private ApiService apiService;
-        private NavigationService navigationService;
+        private NavigationService navigationService;    
+
+        private ImageSource imageSource;
+        private MediaFile file;
 
         private bool isRunning;
         private bool isEnabled;
@@ -30,6 +38,20 @@ namespace MobileFlowers.ViewModel
 
 
         #region Properties
+
+        public ImageSource ImageSource
+        {
+            get { return imageSource; }
+
+            set
+            {
+                if (imageSource != value)
+                {
+                    imageSource = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public bool IsRunning
         {
@@ -91,6 +113,44 @@ namespace MobileFlowers.ViewModel
 
 
         #region Commands
+
+       public ICommand TakePictureCommand
+        {
+            get { return new RelayCommand(TakePicture); }
+        }
+
+        private async void TakePicture()
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await dialogService.showMessage("No Camera", ":( No camera available.)}");
+            }
+
+            file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
+            {
+                Directory = "Sample",
+                Name = "test.jpg",
+                PhotoSize = PhotoSize.Small,
+            });
+
+            IsRunning = true;
+
+            if (file != null)
+            {
+                ImageSource = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+
+                    return stream;
+                });
+            }
+
+            IsRunning = false;
+
+        }
+
         public object SaveFlowerCommand
         {
             get { return  new RelayCommand(SaveFlower);}
@@ -113,15 +173,30 @@ namespace MobileFlowers.ViewModel
                 return;
             }
 
+            //aqui invoco el metodo de la clase fileHelper para con vertir los bits de la foto a array de string:
+            var imageArray = FilesHelper.ReadFully(file.GetStream());
+
+            //limpio memoria:
+            file.Dispose();
 
 
-
-
+            var flawer = new Flowers()
+            {
+                Image = Image,
+                LastPurchase = LastPurchase,
+                IsActive = IsActive,
+                Observation = Observation,
+                ImageArray = imageArray,
+                Description = Description,
+                FlowerId = FlowerId,
+                Price = Price,
+                
+            };
 
             IsRunning = true;
             IsEnabled = false;
 
-            var response = await apiService.Put("http://flowershome.azurewebsites.net", "/api","/Flowers", this);
+            var response = await apiService.Put("http://flowershome.azurewebsites.net", "/api","/Flowers", flawer);
 
             IsRunning = false;
             IsEnabled = true;
@@ -143,6 +218,7 @@ namespace MobileFlowers.ViewModel
             get { return   new RelayCommand(DeleteFlower);}
         }
 
+        
 
 
         private async void DeleteFlower()

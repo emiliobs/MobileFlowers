@@ -48,11 +48,22 @@
                    TextColor="Aqua"></Label>
             <Editor Text="{Binding Observation, Mode=TwoWay}"></Editor>
 
-            <ActivityIndicator
-      IsRunning="{Binding IsRunning, Mode=TwoWay}">
-            </ActivityIndicator>
-            <StackLayout
-      Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal">
+
+                <Image HorizontalOptions="StartAndExpand" Source="ic_add_a_photo.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TakePictureCommand}"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                
+                <ActivityIndicator IsRunning="{Binding IsRunning, Mode=TwoWay}"></ActivityIndicator>
+
+            </StackLayout>
+            
+            <Image Source="{Binding FullImagePath, Mode=TwoWay}"></Image>
+            
+            <StackLayout Orientation="Horizontal">
+                
                 <Button
         Command="{Binding SaveFlowerCommand}"
         IsEnabled="{Binding IsEnabled, Mode=TwoWay}"

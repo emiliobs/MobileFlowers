@@ -116,14 +116,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Extras\Configuración del Ambiente de Desarrollo para Xamarin.docx" />
     <None Include="Extras\Creating and consuming services from Xamarin Forms App on Azure.docx" />
+    <None Include="Extras\CursoXamarin Juancaarlos.rar" />
+    <None Include="Extras\datepicker.rar" />
+    <None Include="Extras\Demo SQLite Relations.docx" />
+    <None Include="Extras\Demo Xamarin Divisas II.docx" />
     <None Include="Extras\Divisas 2 MVVM.docx" />
     <None Include="Extras\Divisas MVVM.docx" />
+    <None Include="Extras\ECommerce App.docx" />
+    <None Include="Extras\Guia ejemplo de SQLite en Xamarin.Forms %28Ver 3%29.docx" />
     <None Include="Extras\lab04.pdf" />
     <None Include="Extras\lab05.pdf" />
+    <None Include="Extras\Modelos ECommerce App.docx" />
+    <None Include="Extras\Modelos Orders.docx" />
+    <None Include="Extras\Momento Valorativo #4.pdf" />
+    <None Include="Extras\Momento Valorativo #5.pdf" />
     <None Include="Extras\MVC.docx" />
     <None Include="Extras\MVVM.docx" />
     <None Include="Extras\Taller Consumo de servicios Azure desde Xamarin Forms.docx" />
+    <None Include="Extras\Web API And Publish.docx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +157,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Extras\DER Ecommerce.png" />
     <Content Include="Extras\fondo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
